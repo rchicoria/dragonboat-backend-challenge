@@ -25,14 +25,16 @@ Please avoid using patterns/libraries that overlap the purpose of the existing o
 
 - The user must be able to see the average score of the leaves of each branch of the project tree eg.
 
-Id | Name    | Parent | Score | Children Score
-1  | L1-1    | null   | 50    | 30
-2  | L1-2    | null   | 20    | 100
-3  | L2-1    | 1      | 100   | 50
-4  | L2-2    | 1      | 10    | null
-5  | L2-3    | 2      | 100   | null
-6  | L3-1    | 3      | 0     | null
-7  | L3-2    | 3      | 100   | null
+
+| Id | Name    | Parent | Score | Children Score |
+|----|---------|--------|-------|----------------|
+|  1 | L1-1    | null   | 50    | 30 |
+|  2 | L1-2    | null   | 20    | 100 |
+|  3 | L2-1    | 1      | 100   | 50 |
+|  4 | L2-2    | 1      | 10    | null |
+|  5 | L2-3    | 2      | 100   | null |
+|  6 | L3-1    | 3      | 0     | null |
+|  7 | L3-2    | 3      | 100   | null |
 
 - The current implementation exposes a REST API. Please extend the current implementation to support any other kind of communication (eg. RPC, Message Queue, etc. - keep it simple(!)). You don't need to code an end-to-end solution, just make it clear for us that you understood the point. 
 

@@ -2,7 +2,7 @@
 
 The main purpose of this challenge is to evaluate the ability to add functionality to an existing codebase following the pre-existent stack and design patterns.
 
-On the backend you will find a node.js 3-layer architecture (you may want to read more about it at https://dev.to/santypk4/bulletproof-node-js-project-architecture-4epf - read 3 layer architecture section and ignore the rest). The database layer was mocked with a model that reads and writes from/to a local object as it is not the main purpose of this challenge (you are free to replace by a Sequelize, Mongoose or any other tool). You can extend the existing API as you need in order to fit your needs.
+On the backend you will find a node.js 3-layer architecture (you may want to read more about it at https://dev.to/santypk4/bulletproof-node-js-project-architecture-4epf - read 3 layer architecture section and ignore the rest). The database layer was mocked with a model that reads and writes from/to a local object (you are free to replace by a Sequelize, Mongoose or any other tool). You can extend the existing API as you need in order to fit your needs.
 
 On the frontend you will find a React/Redux project using:
 
@@ -41,8 +41,6 @@ Please avoid using patterns/libraries that overlap the purpose of the existing o
 - Dockerize the solution
 
 ## Tips
-
-- This is a Backend challenge with some light Frontend skills evaluation so you don't need to design complex client side solutions. Keep it simple on visualization
 
 - Design your solution assuming each project can have hundreds or thousands of children
 

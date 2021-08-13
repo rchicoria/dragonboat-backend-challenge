@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import RestControllerMixin from "../utils/RestControllerMixin";
 import ProjectsController from "./projects.controller";
+import pick from "../utils/pick";
 
 export default class extends RestControllerMixin(ProjectsController) {
   constructor() {
@@ -10,7 +11,12 @@ export default class extends RestControllerMixin(ProjectsController) {
 
     router.get("/", async (req, res, next) => {
       try {
-        const projects = await this.get();
+        const filter = pick(req.query, ['level']);
+        if (filter.hasOwnProperty("level")) {
+          filter.level = +filter.level;
+        }
+
+        const projects =  await this.getAll(filter);
 
         return res.status(200).send(projects);
       } catch (err) {

@@ -1,4 +1,4 @@
-import { FETCH_PROJECT, FETCH_PROJECTS } from "./types";
+import { FETCH_PROJECT, FETCH_PROJECTS, FETCH_LEVEL_PROJECTS } from "./types";
 
 const initialState = {
   byId: {},
@@ -26,6 +26,16 @@ const reducer = (state = initialState, action) => {
           ...state.byId,
           [data.id]: data,
         },
+      };
+    }
+    case FETCH_LEVEL_PROJECTS: {
+      const data = action.payload || [];
+      const byId = data.reduce((byId, p) => ({ ...byId, [p.id]: p }), {});
+      const ids = data.map((p) => p.id);
+      return {
+        ...state,
+        byId: { ...state.byId, ...byId },
+        ids: Array.from(new Set([...state.ids, ...ids])),
       };
     }
     default: {

@@ -2,14 +2,14 @@ import React, { useEffect } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { fetchProjects as fetchProjectsAction } from "../../store/projects/actions";
+import { fetchLevelProjects as fetchLevelProjectsAction } from "../../store/projects/actions";
 import { selectProjects } from "../../store/projects/selectors";
 
 const container = (Component) => {
   return (props) => {
     const dispatch = useDispatch();
 
-    const fetchProjects = () => dispatch(fetchProjectsAction());
+    const fetchProjects = () => dispatch(fetchLevelProjectsAction(1));
 
     const projects = useSelector((state) => selectProjects(state));
 

@@ -7,9 +7,9 @@ export default class {
     return service.getOne(id);
   };
 
-  get = () => {
+  getAll = (conditions) => {
     const service = new ProjectsService();
 
-    return service.getAll();
+    return service.getAll(conditions);
   };
 }

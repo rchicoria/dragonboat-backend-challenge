@@ -12,7 +12,6 @@ export default class extends Service {
   };
 
   getAll = (conditions) => {
-    console.log(conditions);
     return Projects.findAll(conditions);
   };
 }

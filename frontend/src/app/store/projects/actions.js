@@ -22,10 +22,26 @@ export const fetchLevelProjects = (level) => {
   return async (dispatch) =>
     dispatch({
       type: FETCH_LEVEL_PROJECTS,
-      payload: await axios.get("/projects", {
-        params: {
-          level
-        }
-      }).then((data) => data.data),
+      payload: await axios
+        .get("/projects", {
+          params: {
+            level,
+          },
+        })
+        .then((data) => data.data),
+    });
+};
+
+export const fetchChildProjects = (parent) => {
+  return async (dispatch) =>
+    dispatch({
+      type: FETCH_LEVEL_PROJECTS,
+      payload: await axios
+        .get("/projects", {
+          params: {
+            parent,
+          },
+        })
+        .then((data) => data.data),
     });
 };

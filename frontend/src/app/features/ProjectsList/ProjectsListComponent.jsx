@@ -1,19 +1,40 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
+import TreeView from "@material-ui/lab/TreeView";
+import TreeItem from "@material-ui/lab/TreeItem";
 import Typography from "@material-ui/core/Typography";
 
-const Component = ({ projects }) => {
+const Component = ({ projects, projectsById, onExpand }) => {
+  const renderItems = (ids) => (
+    <>
+      {ids.map((id) => (
+        <>
+          {projectsById[id] && (
+            <TreeItem nodeId={id} label={projectsById[id].title}>
+              {renderItems(projectsById[id].children)}
+            </TreeItem>
+          )}
+        </>
+      ))}
+    </>
+  );
+
+  const expandedRef = useRef([]);
+
+  const handleToggle = (event, nodeIds) => {
+    if (expandedRef.current.length > nodeIds.length) return;
+    const newIds = nodeIds.filter((id) => !expandedRef.current.includes(id));
+    onExpand(newIds[0]);
+  };
+
+  const topLevelIds = projects.filter((p) => p.level === 1).map((p) => p.id);
   return (
     <>
       <Title variant="h4">Projects List</Title>
-      <List>
-        {projects.map((p) => (
-          <ListItem key={p.id}>{p.title}</ListItem>
-        ))}
-      </List>
+      <TreeView onNodeToggle={handleToggle}>
+        {renderItems(topLevelIds)}
+      </TreeView>
     </>
   );
 };

@@ -18,7 +18,7 @@ const Component = ({ projects, projectsById, onExpand, onChangeParent }) => {
             <TreeItem
               key={id}
               nodeId={String(id)}
-              label={projectsById[id].title}
+              label={`${projectsById[id].title} - score: ${projectsById[id].score}`}
             >
               {renderItems(getChildIds(id))}
             </TreeItem>

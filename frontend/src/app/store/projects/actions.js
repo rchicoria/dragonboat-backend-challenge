@@ -1,6 +1,11 @@
 import axios from "axios";
 
-import { FETCH_PROJECTS, FETCH_PROJECT, FETCH_LEVEL_PROJECTS } from "./types";
+import {
+  FETCH_PROJECTS,
+  FETCH_PROJECT,
+  FETCH_CHILD_PROJECTS,
+  UPDATE_PROJECT,
+} from "./types";
 
 export const fetchProjects = () => {
   return async (dispatch) =>
@@ -18,30 +23,26 @@ export const fetchProject = (id) => {
     });
 };
 
-export const fetchLevelProjects = (level) => {
-  return async (dispatch) =>
-    dispatch({
-      type: FETCH_LEVEL_PROJECTS,
-      payload: await axios
-        .get("/projects", {
-          params: {
-            level,
-          },
-        })
-        .then((data) => data.data),
-    });
-};
-
 export const fetchChildProjects = (parent) => {
   return async (dispatch) =>
     dispatch({
-      type: FETCH_LEVEL_PROJECTS,
+      type: FETCH_CHILD_PROJECTS,
       payload: await axios
         .get("/projects", {
           params: {
             parent,
           },
         })
+        .then((data) => data.data),
+    });
+};
+
+export const updateProject = (id, updates) => {
+  return async (dispatch) =>
+    dispatch({
+      type: UPDATE_PROJECT,
+      payload: await axios
+        .put(`/projects/${id}`, updates)
         .then((data) => data.data),
     });
 };

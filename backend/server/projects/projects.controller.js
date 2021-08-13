@@ -12,4 +12,10 @@ export default class {
 
     return service.getAll(conditions);
   };
+
+  updateOne = (id, updates) => {
+    const service = new ProjectsService();
+
+    return service.updateOne(id, updates);
+  };
 }

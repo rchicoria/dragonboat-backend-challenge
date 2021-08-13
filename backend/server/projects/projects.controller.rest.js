@@ -11,10 +11,7 @@ export default class extends RestControllerMixin(ProjectsController) {
 
     router.get("/", async (req, res, next) => {
       try {
-        const filter = pick(req.query, ["level", "parent"]);
-        if (filter.hasOwnProperty("level")) {
-          filter.level = +filter.level;
-        }
+        const filter = pick(req.query, ["parent"]);
         if (filter.hasOwnProperty("parent")) {
           filter.parent = +filter.parent;
         }
@@ -30,6 +27,16 @@ export default class extends RestControllerMixin(ProjectsController) {
     router.get("/:id", async (req, res, next) => {
       try {
         const project = await this.getOne(+req.params.id);
+
+        return res.status(200).send(project);
+      } catch (err) {
+        next(err);
+      }
+    });
+
+    router.put("/:id", async (req, res, next) => {
+      try {
+        const project = await this.updateOne(+req.params.id, req.body);
 
         return res.status(200).send(project);
       } catch (err) {

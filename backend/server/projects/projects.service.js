@@ -14,4 +14,11 @@ export default class extends Service {
   getAll = (conditions) => {
     return Projects.findAll(conditions);
   };
+
+  updateOne = (id, updates) => {
+    const project = Projects.updateOne(id, updates);
+    if (!project) throw new ObjectDoesNotExistError();
+
+    return project;
+  };
 }

@@ -7,9 +7,15 @@ export default class {
     return service.getOne(id);
   };
 
-  get = () => {
+  getAll = (conditions) => {
     const service = new ProjectsService();
 
-    return service.getAll();
+    return service.getAll(conditions);
+  };
+
+  updateOne = (id, updates) => {
+    const service = new ProjectsService();
+
+    return service.updateOne(id, updates);
   };
 }

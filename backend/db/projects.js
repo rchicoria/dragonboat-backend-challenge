@@ -1,24 +1,46 @@
 // This model mocks a real database model for the sake com simplicity
 const data = [
   {
-    id: 1,
-    title: "Project 1",
+    id: 11,
+    title: "L1-1",
+    score: 50,
+    parent: -1,
   },
   {
-    id: 2,
-    title: "Project 2",
+    id: 12,
+    title: "L1-2",
+    score: 20,
+    parent: -1,
   },
   {
-    id: 3,
-    title: "Project 3",
+    id: 21,
+    title: "L2-1",
+    score: 100,
+    parent: 11,
   },
   {
-    id: 4,
-    title: "Project 4",
+    id: 22,
+    title: "L2-2",
+    score: 10,
+    parent: 11,
   },
   {
-    id: 5,
-    title: "Project 5",
+    id: 23,
+    title: "L2-3",
+    score: 100,
+    parent: 21,
+  },
+  {
+    id: 31,
+    title: "L3-1",
+    score: 0,
+    parent: 21,
+  },
+  {
+    id: 32,
+    title: "L3-2",
+    score: 100,
+    parent: 21,
   },
 ];
 export default class {
@@ -42,6 +64,15 @@ export default class {
         return obj[key] === condition;
       }, true)
     );
+  };
+
+  static updateOne = (id, updates) => {
+    const instance = data.find((obj) => obj.id === id);
+    if (!instance) return;
+
+    Object.assign(instance, updates);
+
+    return instance;
   };
 
   // You can add more methods to this mock to extend its functionality or

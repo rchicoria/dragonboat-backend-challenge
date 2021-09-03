@@ -14,4 +14,8 @@ export default class extends Service {
   getAll = () => {
     return Projects.findAll();
   };
+
+  findOneAndUpdate = (id) => {
+    return Projects.findOneAndUpdate(id);
+  };
 }

@@ -1,15 +1,21 @@
 import ProjectsService from "./projects.service";
 
 export default class {
-  getOne = (id) => {
+  fetchProject = (id) => {
     const service = new ProjectsService();
 
     return service.getOne(id);
   };
 
-  get = () => {
+  getProjects = () => {
     const service = new ProjectsService();
 
     return service.getAll();
+  };
+
+  updateProject = (id) => {
+    const service = new ProjectsService();
+
+    return service.findOneAndUpdate(id);
   };
 }

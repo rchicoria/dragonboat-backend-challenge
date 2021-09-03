@@ -3,22 +3,42 @@ const data = [
   {
     id: 1,
     title: "Project 1",
+    parent: null,
+    score: 0,
+    children: null,
+    childrenScore: null
   },
   {
     id: 2,
     title: "Project 2",
+    parent: null,
+    score: 0,
+    children: null,
+    childrenScore: null
   },
   {
     id: 3,
     title: "Project 3",
+    parent: null,
+    score: 0,
+    children: null,
+    childrenScore: null
   },
   {
     id: 4,
     title: "Project 4",
+    parent: null,
+    score: 0,
+    children: null,
+    childrenScore: null
   },
   {
     id: 5,
     title: "Project 5",
+    parent: null,
+    score: 0,
+    children: null,
+    childrenScore: null
   },
 ];
 export default class {

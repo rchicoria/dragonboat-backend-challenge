@@ -10,7 +10,7 @@ export default class extends RestControllerMixin(ProjectsController) {
 
     router.get("/", async (req, res, next) => {
       try {
-        const projects = await this.get();
+        const projects = await this.getProjects();
 
         return res.status(200).send(projects);
       } catch (err) {
@@ -20,9 +20,20 @@ export default class extends RestControllerMixin(ProjectsController) {
 
     router.get("/:id", async (req, res, next) => {
       try {
-        const project = await this.getOne(+req.params.id);
+        const project = await this.fetchProject(+req.params.id);
 
         return res.status(200).send(project);
+      } catch (err) {
+        next(err);
+      }
+    });
+
+    // update parent or child
+    router.put('/:id', validate('update-project'), async (req, res, next) => {
+      try {
+        const updatedProject = await this.updateProject(+req.params.id);
+
+        return res.status(200).send(updatedProject);
       } catch (err) {
         next(err);
       }

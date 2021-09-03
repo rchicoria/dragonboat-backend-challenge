@@ -39,6 +39,16 @@ export default class extends RestControllerMixin(ProjectsController) {
       }
     });
 
+    // delete a project
+    router.delete('/:id', async (req, res, next) => {
+      try {
+        await this.deleteProject(+req.params.id);
+        return res.sendStatus(204);
+      } catch (err) {
+        next(err);
+      }
+    });
+
     this.router = router;
   }
 }

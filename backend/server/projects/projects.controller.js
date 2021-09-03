@@ -18,4 +18,10 @@ export default class {
 
     return service.findOneAndUpdate(id);
   };
+
+  deleteProject = (id) => {
+    const service = new ProjectsService();
+
+    return service.deleteProject(id);
+  };
 }

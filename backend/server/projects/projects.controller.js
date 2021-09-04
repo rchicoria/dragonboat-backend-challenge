@@ -13,10 +13,10 @@ export default class {
     return service.getAll();
   };
 
-  updateProject = (id) => {
+  updateProject = (details) => {
     const service = new ProjectsService();
 
-    return service.findOneAndUpdate(id);
+    return service.findOneAndUpdate(details);
   };
 
   deleteProject = (id) => {

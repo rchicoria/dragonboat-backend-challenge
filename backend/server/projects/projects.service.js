@@ -15,7 +15,7 @@ export default class extends Service {
     return Projects.findAll();
   };
 
-  findOneAndUpdate = (id) => {
+  findOneAndUpdate = ({ id, children, parent }) => {
     /**
       Updating A's parent as B:
       - Update A's parent

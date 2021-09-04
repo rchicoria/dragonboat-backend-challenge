@@ -18,8 +18,17 @@ module.exports = {
       }
     },
     parent: {
-      type: 'string',
-      pattern: 'objectId'
+      type: 'object',
+      properties: {
+        remove: {
+          type: 'string',
+          pattern: 'id'
+        },
+        add: {
+          type: 'string',
+          pattern: 'id'
+        }
+      }
     }
   }
 };

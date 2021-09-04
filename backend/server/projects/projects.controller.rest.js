@@ -31,7 +31,14 @@ export default class extends RestControllerMixin(ProjectsController) {
     // update parent or child
     router.put('/:id', validate('update-project'), async (req, res, next) => {
       try {
-        const updatedProject = await this.updateProject(+req.params.id);
+        const details = { id: +req.params.id };
+        if (req.body?.children) {
+          details.children = req.body.children;
+        }
+        if (req.body?.parent) {
+          details.parent = req.body.parent;
+        }
+        const updatedProject = await this.updateProject(details};
 
         return res.status(200).send(updatedProject);
       } catch (err) {

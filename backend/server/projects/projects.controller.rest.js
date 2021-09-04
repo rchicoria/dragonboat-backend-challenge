@@ -49,7 +49,10 @@ export default class extends RestControllerMixin(ProjectsController) {
     // delete a project
     router.delete('/:id', async (req, res, next) => {
       try {
-        await this.deleteProject(+req.params.id);
+        // don't bother waiting for response
+        // we should retry upon error
+        // if retry is unsuccessful, log errors + investigate
+        this.deleteProject({ id: +req.params.id });
         return res.sendStatus(204);
       } catch (err) {
         next(err);
